@@ -8,7 +8,7 @@ public class RequestHandler {
     public Response handle(Request request) throws Exception {
         if (request.getPath().equals("/quotes") && request.getHttpMethod().equals(HttpMethod.GET)) {
             return (new QuotesController(request)).doGet();
-        } else if (request.getPath().equals("/quotes") && request.getHttpMethod().equals(HttpMethod.POST)) {
+        } else if (request.getPath().equals("/apply") && request.getHttpMethod().equals(HttpMethod.POST)) {
             return (new QuotesController(request)).doPost();
         }
 

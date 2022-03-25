@@ -2,6 +2,7 @@ package app;
 
 import http.Request;
 import http.response.HtmlResponse;
+import http.response.RederictResponse;
 import http.response.Response;
 
 public class QuotesController extends Controller {
@@ -46,7 +47,7 @@ public class QuotesController extends Controller {
                 "        text-align: left;\n" +
                 "    }";
         String htmlBody = "" +
-                "<form method=\"POST\">" +
+                "<form method=\"POST\" action=\"/apply\">" +
                 "<label>Author: </label><br><input name=\"author\", type=\"text\", placeholder=\"Author\"><br><br>" +
                 "<label>Quote:</label>" +
                 "<br>\n" +
@@ -65,6 +66,6 @@ public class QuotesController extends Controller {
     public Response doPost() {
         // TODO: obradi POST zahtev
 
-        return null;
+        return new RederictResponse("/quotes");
     }
 }
