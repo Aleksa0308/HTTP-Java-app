@@ -10,7 +10,7 @@ public class QuotesController extends Controller {
     public QuotesController(Request request) {
         super(request);
     }
-
+    String htmlBody;
     @Override
     public Response doGet() {
         String style = "" + "input[type=text], select {\n" +
@@ -46,8 +46,8 @@ public class QuotesController extends Controller {
                 "    label{\n" +
                 "        text-align: left;\n" +
                 "    }";
-        String htmlBody = "" +
-                "<form method=\"POST\" action=\"/apply\">" +
+        htmlBody = "" +
+                "<form method=\"POST\" action=\"/save-quote\">" +
                 "<label>Author: </label><br><input name=\"author\", type=\"text\", placeholder=\"Author\"><br><br>" +
                 "<label>Quote:</label>" +
                 "<br>\n" +
@@ -65,7 +65,6 @@ public class QuotesController extends Controller {
     @Override
     public Response doPost() {
         // TODO: obradi POST zahtev
-
         return new RederictResponse("/quotes");
     }
 }
