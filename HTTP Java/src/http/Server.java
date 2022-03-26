@@ -1,16 +1,19 @@
 package http;
 
-import com.google.gson.Gson;
+
+import app.Quotes;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server {
 
     public static final int TCP_PORT = 80;
-
+    public static CopyOnWriteArrayList<Quotes> sviQuotes = new CopyOnWriteArrayList<>();
     public static void main(String[] args) {
+
         try {
             ServerSocket ss = new ServerSocket(TCP_PORT);
             while (true) {

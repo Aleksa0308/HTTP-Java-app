@@ -1,5 +1,6 @@
 package http;
 
+import app.Quotes;
 import app.RequestHandler;
 import http.response.Response;
 
@@ -17,7 +18,10 @@ public class ServerThread implements Runnable {
     private Socket client;
     private BufferedReader in;
     private PrintWriter out;
-
+    private String author;
+    private String quote;
+    private String ceoHttp;
+    private int i;
     public ServerThread(Socket sock) {
         this.client = sock;
 
@@ -50,12 +54,25 @@ public class ServerThread implements Runnable {
             do {
                 System.out.println(requestLine);
                 requestLine = in.readLine();
+                if(requestLine.contains("Content-Length:")){
+                    String temp = requestLine;
+                    String niz[] = temp.split(" ");
+                    i = Integer.parseInt(niz[1]);
+                }
             } while (!requestLine.trim().equals(""));
 
             if (method.equals(HttpMethod.POST.toString())) {
-                // TODO: Ako je request method POST, procitaj telo zahteva (parametre)
-                System.out.println("OVDEEEE");
-                System.out.println(method);
+                char[] buffer = new char[i];
+                in.read(buffer);
+                String ans = new String(buffer);
+                System.out.println(ans);
+                String sve[] = ans.split("=");
+                String sve2[] = sve[1].split("&");
+                author = sve2[0].replace("+"," ");
+                quote = sve[2].replace("+", " ");
+                quote = quote.replace("%27", "\'");
+                Quotes quotes = new Quotes(author, quote);
+                Server.sviQuotes.add(quotes);
             }
 
             Request request = new Request(HttpMethod.valueOf(method), path);

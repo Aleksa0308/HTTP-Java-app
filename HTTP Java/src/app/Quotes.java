@@ -24,4 +24,11 @@ public class Quotes {
     public void setQuote(String quote) {
         Quote = quote;
     }
+
+    @Override
+    public String toString() {
+        return "<div style=\"border: black;\">\n" +
+                "    <label>" + getAuthor() + ": " + "\"" + getQuote()+ "\"" + "</label>\n" +
+                "  </div>";
+    }
 }

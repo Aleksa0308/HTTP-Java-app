@@ -1,6 +1,8 @@
 package app;
 
+import com.google.gson.Gson;
 import http.Request;
+import http.Server;
 import http.response.HtmlResponse;
 import http.response.RederictResponse;
 import http.response.Response;
@@ -11,6 +13,10 @@ public class QuotesController extends Controller {
         super(request);
     }
     String htmlBody;
+
+    String author;
+    String quote;
+
     @Override
     public Response doGet() {
         String style = "" + "input[type=text], select {\n" +
@@ -54,7 +60,7 @@ public class QuotesController extends Controller {
                 "<input name=\"quote\", type=\"text\", placeholder=\"Quote\">" +
                 "<input type=\"submit\" value=\"Submit\">" +
                 "</form>"
-                + "<br>";
+                + "<br>" + "<label style=\"font-size: 36px; font-weight: bold\"> Saved Quotes </label>" + Server.sviQuotes;
 
         String content = "<html><head><title>Daily Quotes</title></head>\n" + "<style>" + style + "</style>";
         content += "<body style=\"margin: auto; width: 20%; padding: 10px;\">" + htmlBody + "</body></html>";
