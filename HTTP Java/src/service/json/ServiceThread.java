@@ -36,6 +36,7 @@ public class ServiceThread implements Runnable {
     @Override
     public void run() {
         try {
+
             // uzimamo samo prvu liniju zahteva, iz koje dobijamo HTTP method i putanju
             String requestLine = in.readLine();
             StringTokenizer stringTokenizer = new StringTokenizer(requestLine);

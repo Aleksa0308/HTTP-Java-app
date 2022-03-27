@@ -7,7 +7,7 @@ import service.json.Service;
 import java.io.*;
 import java.net.Socket;
 
-public class Client {
+public class Client implements Runnable{
 
     private Socket socket;
     private BufferedReader in;
@@ -19,26 +19,31 @@ public class Client {
     }
 
 
-    public static void main(String[] args) throws IOException {
-        String httpZahtev= "GET /qod HTTP/1.1\n" +
-                "Host: localhost:8081\n";
+    public void run(){
+        try {
+            String httpZahtev = "GET /qod HTTP/1.1\n" +
+                    "Host: localhost:8081\n";
 
-        String requestLine;
-        String qod;
-        Socket socket = new Socket("localhost", Service.Service_PORT);
-        Client client = new Client(socket);
-        client.out.println(httpZahtev);
-        requestLine = client.in.readLine();
-        do {
-            System.out.println(requestLine);
+            String requestLine;
+            String qod;
+            Socket socket = new Socket("localhost", Service.Service_PORT);
+            Client client = new Client(socket);
+            client.out.println(httpZahtev);
             requestLine = client.in.readLine();
-        } while (!requestLine.trim().equals(""));
+            do {
+                System.out.println(requestLine);
+                requestLine = client.in.readLine();
+            } while (!requestLine.trim().equals(""));
 
-        qod = client.in.readLine();
-        System.out.println(qod);
-        Gson gson = new Gson();
-        Server.quoteOfTheDay = gson.fromJson(qod, QuoteOfTheDay.class);
-        System.out.println(Server.quoteOfTheDay);
-
+            qod = client.in.readLine();
+            System.out.println(qod);
+            Gson gson = new Gson();
+            Server.quoteOfTheDay = gson.fromJson(qod, QuoteOfTheDay.class);
+            System.out.println(Server.quoteOfTheDay);
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

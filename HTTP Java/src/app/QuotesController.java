@@ -59,7 +59,7 @@ public class QuotesController extends Controller {
                 "<br>\n" +
                 "<input name=\"quote\", type=\"text\", placeholder=\"Quote\">" +
                 "<input type=\"submit\" value=\"Submit\">" +
-                "</form>" + "<br>" + Server.quoteOfTheDay
+                "</form>" + "<br>" + "<label style=\"font-size: 36px; font-weight: bold\"> Quote of the day: </label> <br>" + Server.quoteOfTheDay
                 + "<br>" + "<label style=\"font-size: 36px; font-weight: bold\"> Saved Quotes </label>" + Server.sviQuotes;
 
         String content = "<html><head><title>Daily Quotes</title></head>\n" + "<style>" + style + "</style>";

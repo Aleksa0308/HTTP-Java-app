@@ -16,7 +16,6 @@ public class Server {
     public static CopyOnWriteArrayList<Quotes> sviQuotes = new CopyOnWriteArrayList<>();
     public static QuoteOfTheDay quoteOfTheDay;
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("localhost", Service.Service_PORT);
 
         try {
             ServerSocket ss = new ServerSocket(TCP_PORT);

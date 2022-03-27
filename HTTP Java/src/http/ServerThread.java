@@ -3,6 +3,7 @@ package http;
 import app.Quotes;
 import app.RequestHandler;
 import http.response.Response;
+import service.json.Service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -42,6 +43,8 @@ public class ServerThread implements Runnable {
 
     public void run() {
         try {
+            Socket socket = new Socket("localhost", Service.Service_PORT);
+            new Thread(new Client(socket)).start();
             // uzimamo samo prvu liniju zahteva, iz koje dobijamo HTTP method i putanju
             String requestLine = in.readLine();
             StringTokenizer stringTokenizer = new StringTokenizer(requestLine);
