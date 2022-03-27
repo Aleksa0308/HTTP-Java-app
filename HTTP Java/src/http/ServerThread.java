@@ -20,7 +20,6 @@ public class ServerThread implements Runnable {
     private PrintWriter out;
     private String author;
     private String quote;
-    private String ceoHttp;
     private int i;
     public ServerThread(Socket sock) {
         this.client = sock;
@@ -66,13 +65,7 @@ public class ServerThread implements Runnable {
                 in.read(buffer);
                 String ans = new String(buffer);
                 System.out.println(ans);
-                String sve[] = ans.split("=");
-                String sve2[] = sve[1].split("&");
-                author = sve2[0].replace("+"," ");
-                quote = sve[2].replace("+", " ");
-                quote = quote.replace("%27", "\'");
-                Quotes quotes = new Quotes(author, quote);
-                Server.sviQuotes.add(quotes);
+                handlePost(ans);
             }
 
             Request request = new Request(HttpMethod.valueOf(method), path);
@@ -94,5 +87,17 @@ public class ServerThread implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private void handlePost(String ans){
+
+        String sve[] = ans.split("=");
+        String sve2[] = sve[1].split("&");
+        author = sve2[0].replace("+"," ");
+        quote = sve[2].replace("+", " ");
+        quote = quote.replace("%27", "\'");
+        quote = quote.replace("%2C", ",");
+        quote = quote.replace("%3F", "?");
+        Quotes quotes = new Quotes(author, quote);
+        Server.sviQuotes.add(quotes);
     }
 }

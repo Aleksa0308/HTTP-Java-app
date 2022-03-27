@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server {
 
-    public static final int TCP_PORT = 80;
+    public static final int TCP_PORT = 8080;
     public static CopyOnWriteArrayList<Quotes> sviQuotes = new CopyOnWriteArrayList<>();
     public static void main(String[] args) {
 
