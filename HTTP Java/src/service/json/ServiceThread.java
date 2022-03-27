@@ -50,6 +50,8 @@ public class ServiceThread implements Runnable {
             } while (!requestLine.trim().equals(""));
 
 
+            System.out.println("--------->" + method +" " + path + "<-------------" );
+
             Request request = new Request(HttpMethod.valueOf(method), path);
 
             RequestHandler requestHandler = new RequestHandler();
