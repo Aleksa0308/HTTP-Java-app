@@ -29,6 +29,6 @@ public class Quotes {
     public String toString() {
         return "<div style=\"border: black;\">\n" +
                 "    <label>" + getAuthor() + ": " + "\"" + getQuote()+ "\"" + "</label>\n" +
-                "  </div>";
+                "  </div><br>";
     }
 }

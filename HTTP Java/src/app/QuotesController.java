@@ -60,7 +60,7 @@ public class QuotesController extends Controller {
                 "<input name=\"quote\", type=\"text\", placeholder=\"Quote\">" +
                 "<input type=\"submit\" value=\"Submit\">" +
                 "</form>" + "<br>" + "<label style=\"font-size: 36px; font-weight: bold\"> Quote of the day: </label> <br>" + Server.quoteOfTheDay
-                + "<br>" + "<label style=\"font-size: 36px; font-weight: bold\"> Saved Quotes </label>" + Server.sviQuotes;
+                + "<br>" + "<label style=\"font-size: 36px; font-weight: bold\"> Saved Quotes </label>" + getSavedQuotes();
 
         String content = "<html><head><title>Daily Quotes</title></head>\n" + "<style>" + style + "</style>";
         content += "<body style=\"margin: auto; width: 20%; padding: 10px;\">" + htmlBody + "</body></html>";
@@ -72,5 +72,13 @@ public class QuotesController extends Controller {
     public Response doPost() {
         // TODO: obradi POST zahtev
         return new RederictResponse("/quotes");
+    }
+
+    private String getSavedQuotes(){
+        String string = "";
+        for(Quotes quotes : Server.sviQuotes){
+            string += quotes.toString();
+        }
+        return string;
     }
 }

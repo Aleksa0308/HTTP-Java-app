@@ -27,6 +27,6 @@ public class QuoteOfTheDay {
 
     @Override
     public String toString() {
-        return "<label>" + getAuthor() + "</label> <br>" + "<label style=\"font-style:italic\">" + "\"" + getQuote() + "\"" + "</label>";
+        return "<div style=\"border: black;\"><label>" + getAuthor() + "</label> <br>" + "<label style=\"font-style:italic\">" + "\"" + getQuote() + "\"" + "</label></div>";
     }
 }
