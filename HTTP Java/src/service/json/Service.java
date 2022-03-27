@@ -24,8 +24,8 @@ public class Service {
     }
     public static void makeQuotes(){
         Qod qod = new Qod("Lao Tzu","The journey of a thousand miles begins with one step.");
-        Qod qod1 = new Qod("School Kid", "I don't care that you broke your elbow!");
-        Qod qod2 = new Qod("Kanye West", "I need a room full of mirrors, so I can be surrounded by winners!");
+        Qod qod1 = new Qod("Kanye West", "I need a room full of mirrors, so I can be surrounded by winners!");
+        Qod qod2 = new Qod("School Kid", "I don't care that you broke your elbow!");
         Qod qod3 = new Qod("Will Farrel", "Before you marry a person, you should first make them use a computer with slow Internet to see who they really are.");
         Qod qod4 = new Qod("Michael Scott","That's what she said!");
         Qod qod5 = new Qod("Tony Stark","I am Iron-Man");

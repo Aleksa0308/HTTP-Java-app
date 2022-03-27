@@ -1,7 +1,9 @@
 package http;
 
 
+import app.QuoteOfTheDay;
 import app.Quotes;
+import service.json.Service;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,7 +14,9 @@ public class Server {
 
     public static final int TCP_PORT = 8080;
     public static CopyOnWriteArrayList<Quotes> sviQuotes = new CopyOnWriteArrayList<>();
-    public static void main(String[] args) {
+    public static QuoteOfTheDay quoteOfTheDay;
+    public static void main(String[] args) throws IOException {
+        Socket socket = new Socket("localhost", Service.Service_PORT);
 
         try {
             ServerSocket ss = new ServerSocket(TCP_PORT);

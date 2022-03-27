@@ -1,5 +1,7 @@
 package http;
 
+import app.QuoteOfTheDay;
+import com.google.gson.Gson;
 import service.json.Service;
 
 import java.io.*;
@@ -10,7 +12,6 @@ public class Client {
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
-
     public Client(Socket socket) throws IOException {
         this.socket = socket;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -19,8 +20,6 @@ public class Client {
 
 
     public static void main(String[] args) throws IOException {
-        //TODO: Kreirati Klijenta koji ce da salje GET zahtev ka Pomocnom Servisu
-        // Razmisli kakav response treba da bude od pomocnog servisa, da li treba da redirektuje ili nesto drugacije
         String httpZahtev= "GET /qod HTTP/1.1\n" +
                 "Host: localhost:8081\n";
 
@@ -37,8 +36,9 @@ public class Client {
 
         qod = client.in.readLine();
         System.out.println(qod);
-
-
+        Gson gson = new Gson();
+        Server.quoteOfTheDay = gson.fromJson(qod, QuoteOfTheDay.class);
+        System.out.println(Server.quoteOfTheDay);
 
     }
 }
