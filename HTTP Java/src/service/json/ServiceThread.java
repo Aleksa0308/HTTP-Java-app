@@ -1,9 +1,10 @@
 package service.json;
 
-import app.RequestHandler;
+
+
 import http.HttpMethod;
-import http.Request;
-import http.response.Response;
+import service.app.RequestHandler;
+import service.json.response.Response;
 
 import java.io.*;
 import java.net.Socket;
