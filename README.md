@@ -1,4 +1,4 @@
-# HTTP-Java-app
+# HTTP-Java-app (Quote Manager)
 
 **Java aplikacija koja sadrzi glavni server koji je zaduzan da handluje POST i GET requestove klijenta (browser).**  
 Glavni server je zaduzen da kada dobije GET zahtev renderuje staticku stranicu.  
